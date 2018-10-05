@@ -45,6 +45,8 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{fillbetween}
+\usepackage{csquotes} % Quotation marks
+
 %% the following commands are needed for some matlab2tikz features
 \usetikzlibrary{plotmarks}
 \usetikzlibrary{arrows.meta}
@@ -147,7 +149,7 @@ headershade=plain
 \item High order harmonics in the electrical grid introduced by switching converters need to be compensated to avoid damage and energy loss
 \item Classic active power filter (APF) controllers are capable of compensating harmonics, but are not flexible under variable load scenarios
 \item A classic well-tested method to compensate harmonics relies on the instantaneous reference frame (IRP) theory
-\item A new model predictive control approach which uses shape classes (LSSS MPC) could be utilized to compensate harmonics without the need to design filters for different load scenarios
+\item A novel approach: \enquote{Linear State Signal Shaping Model Predictive Control} (LSSS MPC), could be utilized to compensate harmonics using shape classes, without the need to design filters for different load scenarios
 \end{itemize}
 \vspace{-1.3em}
 }}
