@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{frutiger}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding=T1}% Disable ligatures because font doesn't have it
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % Math packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{circuitikz}[european]
+
+%% the following commands are needed for some matlab2tikz features
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+% Tikz
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc, intersections, arrows, shapes}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=pdf/]
+
+\definecolor{fhggreen}{RGB}{23,200,90}
+\definecolor{fhggrey}{RGB}{225,227,227}
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[cm]{sfmath}
+
+
+\begin{document}
+
+\usefont{T1}{pfr}{l}{n}\selectfont							%Use Frutiger font
+\tikzsetnextfilename{mpc_block}
+
+\definecolor{blockgreen}{rgb}{0.1922,0.6392,0.3294}%
+
+\tikzstyle{int}=[draw, fill=blockgreen!60, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+
+\begin{tikzpicture}[thick, node distance=2.5cm,auto,>=latex', scale=0.8, transform shape]
+    %\node [int, pin={[init]above:$v_0$}] (a) {$\frac{1}{s}$};
+    \node [draw, circle, minimum size=1em,label={80:-},label={355:-},label={260:-}] (a) {};
+    \node (b) [left of=a,node distance=1cm, coordinate] {a};
+    \node [int] (c) [right of=a] {$K_{MPC}$};
+    %\node [coordinate] (d) [right of=c, node distance=1.5cm]{};
+    \node [int] (d) [right of=c] {$\frac{z}{z-1} I$};
+    %\node [coordinate] (e) [right of=d, node distance=1cm]{};
+    \node [right of=d,draw, fill, circle, text width=2pt, inner sep=0pt,node distance=1cm] (e) {};
+    \node [int] (f) [right of=e,node distance=1cm] {Grid};
+    \node [right of=f,draw, fill, circle, text width=2pt, inner sep=0pt,node distance=1cm] (g) {};
+    \node (h) [right of=g, node distance=1cm] {$x(k)$};
+    \node [int] (i) [below of=c, node distance=3cm] {$\Psi$};
+    \node [int] (j) [below of=d, node distance=1.6cm] {$z^{-1} I$};
+    \node [int] (k) [below of=c, node distance=1.6cm] {$\Upsilon$};
+    \node (l) [left of=k, node distance=1cm,text width=0pt, inner sep=0pt] {};
+    \node (m) [above of=f, node distance=2.2cm] {d};
+    \node [above of=f,draw, fill, circle, text width=2pt, inner sep=0pt,node distance=1.7cm] (n) {};
+    \node (o) [int, above of=c, node distance=1.7cm] {$\Gamma$};
+    
+    \path[->] (b) edge node {$\Xi(k)$} (a);
+    \path[->] (a) edge node {$\mathcal{E}(k)$} (c);
+    \draw[->] (c) edge node {$\Delta u(k)$} (d) ;
+    \draw[-] (d) edge node {} (e);
+    \draw[->] (e) edge node {} (f);
+    \draw[-] (f) edge node {} (g);
+    \draw[->] (g) edge node {} (h);
+    \draw[->] (g) |- (i);
+    \draw[->] (i) -| (a);
+    \draw[->] (e) |- (j);
+    \draw[->] (j) edge node {} (k);
+    \draw[-] (k) edge node {} (l);
+    \draw[->] (l.east) -- (a.south east);
+    \draw[->] (m) edge node {} (f);
+    \draw[->] (n) edge node {} (o);
+    \draw[->] (o) -| (a);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,219 @@
+\def\matlab{MATLAB }
+\def\simulink{SIMULINK }
+\newcommand{\bbma} {\begin{bmatrix} }
+\newcommand{\ebma} {\end{bmatrix}}
+\newcommand{\bpma} {\begin{pmatrix} }
+\newcommand{\epma} {\end{pmatrix}}
+
+
+ \def\vec#1{\ensuremath{\mathchoice
+                     {\mbox{\boldmath$\displaystyle\mathbf{#1}$}}
+                     {\mbox{\boldmath$\textstyle\mathbf{#1}$}}
+                     {\mbox{\boldmath$\scriptstyle\mathbf{#1}$}}
+                     {\mbox{\boldmath$\scriptscriptstyle\mathbf{#1}$}}}}%
+
+% tensor
+\def\tens#1{\relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi}
+
+\def\norm#1{\|#1\|} 
+
+\def\utilde{\undertilde}
+
+%\def\kruskal#1{\left[\left[\; #1 \;\right]\right]}
+
+\newcommand{\tucker}[2]{\left[ #1 \right] \cdot #2}
+\newcommand{\kruskalone}[1]{\left[ #1 \right] \cdot \tens{I}}
+\newcommand{\kruskal}[2]{\left[ #1 \right] \cdot #2 }
+\newcommand{\krusk}[1]{\left[ #1 \right] }
+\newcommand{\kruskaltwo}[2]{\left[ #1 \right] \cdot #2}
+
+%\newcommand{\cprod}[3]{\left\langle\!\!\!\left\langle \, #1 \,|\,  #2  \right.\right\rangle_{#3}}
+
+%\newcommand{\cprod}[3]{\left\langle #1 \,,\,  #2  \right\rangle_{#3}}
+
+\newcommand{\cprod}[3]{\left\langle\,#1\,\left|\,#2\,\right.\right\rangle_{#3}}
+\newcommand{\aprod}[3]{\left\langle\,#1\,\left|\,#2\,\right.\right\rangle^+_{#3}}
+\newcommand{\bprod}[3]{\left\langle\,#1\,\left|\,#2\,\right.\right\rangle^\Box_{#3}}
+\newcommand{\hprod}[3]{\left\langle\,#1\,\left|\,#2\,\right.\right\rangle^\boxplus_{#3}}
+
+%\newcommand{\cprod}[3]{\left\langle\,#1\,|\cdot |\,#2\,\right\rangle_{#3}}
+
+
+%\newcommand{\hprod}[3]{\left\langle\!\left\langle #1 \,|\, #2  \right.\right\rangle^*_{#3}}
+
+\newcommand{\iprod}[2]{\left\langle #1 \,,\,  #2  \right\rangle}
+
+\newcommand{\btens}[1]{ 
+\underline{\tens{#1}}}
+
+\newcommand{\htens}[1]{ 
+{\tens{#1}^*}}
+
+\newcommand{\ctens}[1]{ 
+\utilde{\tens{#1}}}
+
+%\newcommand{\atens}[1]{ 
+%\underline{\underline{\tens{#1}}}}
+
+\newcommand{\atens}[1]{ 
+\tens{#1}}
+
+\newcommand{\cvec}[1]{%\raisebox{1mm}{
+\utilde{%\raisebox{-1mm}{
+\mathbf{#1}
+%}}
+}}
+
+%commands for scalars 
+\newcommand{\cscal}[1]{%\raisebox{1mm}{
+\utilde{%\raisebox{-1mm}{
+#1
+%}}
+}}
+\newcommand{\bscal}[1]{%\raisebox{1mm}{
+\underline{%\raisebox{-1mm}{
+#1
+%}}
+}}
+
+\newcommand{\amat}[1]{ 
+\underline{\underline{\mat{#1}}}}
+
+%\newcommand{\amati}[1]{ 
+%\underline{\underline{\mat{#1}\hspace{-1pt}}}\hspace{1pt}}
+
+\newcommand{\amati}[1]{ 
+\mat{#1}}
+
+
+\newcommand{\cmat}[1]{%\raisebox{1mm}{
+\utilde{%\raisebox{-1mm}{
+\mat{#1}
+%}}
+}}
+
+
+\newcommand{\btensi}[1]{ 
+\underline{\tens{#1}\hspace{-1pt}}\hspace{1pt}}
+
+
+\newcommand{\ctensi}[1]{ 
+\utilde{\tens{#1}\hspace{-1pt}}\hspace{1pt}}
+
+\newcommand{\bvec}[1]{ 
+\underline{\vec{#1}}}
+
+
+
+\newcommand{\bveci}[1]{
+\underline{\vec{#1}\hspace{-1pt}}\hspace{1pt}}
+
+
+
+\newcommand{\tmat}[1]{\mbox{mat} \left( 
+\mathbf{#1} \right)}
+
+\newcommand{\tvec}[1]{\mbox{vec} \left( 
+\mathbf{#1} \right)}
+
+\newcommand{\hvec}[1]{ \mathbf{#1}}
+
+
+%\newcommand{\fone}[0]{\vec{\nu}_1 }
+%\newcommand{\fzero}[0]{\vec{\nu}_0 }
+%\newcommand{\fdcare}[0]{\vec{\nu}_{-}}
+
+%\newcommand{\fone}[0]{\boxminus_1 }
+
+\newcommand{\fone}[0]{\framebox[4mm]{1}}
+\newcommand{\fzero}[0]{\framebox[4mm]{0}}
+%\newcommand{\fdcare}[0]{\framebox[4mm]{\phantom{$0$}\hspace{-5pt}$-$}}
+\newcommand{\fdcare}[0]{\framebox[4mm]{\phantom{$0$}}}
+
+
+
+\newcommand{\mat}[1]{
+\mathbf{#1}}
+
+\newcommand{\bmati}[1]{ 
+\underline{\mathbf{#1}\hspace{-1pt}}\hspace{1pt}}
+
+\newcommand{\bmat}[1]{ 
+\underline{\mathbf{#1}}}
+
+
+\newcommand{\bighadamard}
+{ \bigotimes\hspace{-3.26ex}\bigoplus}
+
+\newcommand{\hadamard}
+{\circledast}
+%{ \otimes\hspace{-2.03ex}\oplus\;}
+
+\newcommand{\vecop}[1]
+{ \mbox{vec}\hspace{1mm}({#1}) }
+
+\newcommand{\mycitation}[2]
+{
+\vspace{-25mm}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\textit{#1}
+\end{minipage}
+\vspace{5mm}
+
+\hfill \textrm{#2}
+
+\vspace{15mm}
+}
+
+
+\newcommand{\tikzfig}[4]
+{
+\begin{figure}[h!]
+\begin{center}
+\scalebox{#3}{
+\input{../pic/#2/#1.tikz}
+%Figure
+}
+\end{center}
+\caption{#4}
+\label{fig:#2--#1}
+\end{figure}
+}
+
+
+\newcommand{\myfig}[4]
+{
+\begin{figure}[h!]
+\begin{center}
+\ifpdf
+	\includegraphics[scale = #3]{../pic/#2/#1.pdf}
+\else
+	\includegraphics[scale = #3]{../pic/#2/#1.eps}
+\fi
+%Figure
+\end{center}
+\caption{#4}
+\label{fig:#2--#1}
+\end{figure}
+}
+
+%%%%%MTI functions
+\newcommand{\monT}[1]{\tens{M}\left(#1\right)}
+\newcommand{\monTN}[2]{\tens{M}_p^{#1}\left(#2\right)}
+\newcommand{\monElTN}[2]{m_p^{#1}\left(#2\right)}
+\newcommand{\LieSingle}[3]{\tens{L}_{#1,#2,#3}}
+\newcommand{\LieDouble}[4]{\tens{L}_{#1,#2,#3,#4}}
+\def\DiffMat{\mat{\Theta}}
+\def\DiffMatEl{\Theta}
+
+
+%%% Definition für die Iterationen beim ILC
+\newcommand{\xd}[1]{#1_{d}}
+\newcommand{\xdi}[1]{#1_{d+1}}
+\newcommand{\xdnext}[1]{#1_{d,next}}
+\newcommand{\xdii}[1]{#1_{d+2}}
+\newcommand{\xdb}[1]{#1_{d,db}}
+\newcommand{\xdbi}[1]{#1_{d+1,db}}
+\newcommand{\xdbii}[1]{#1_{d+2,db}}
+

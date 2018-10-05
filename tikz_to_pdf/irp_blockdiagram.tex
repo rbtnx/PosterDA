@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{frutiger}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding=T1}% Disable ligatures because font doesn't have it
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % Math packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{circuitikz}[european]
+
+%% the following commands are needed for some matlab2tikz features
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+% Tikz
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc, intersections, arrows, shapes}
+
+\usetikzlibrary{external}
+\usetikzlibrary{decorations.markings}
+\tikzexternalize[prefix=pdf/]
+
+\definecolor{fhggreen}{RGB}{23,200,90}
+\definecolor{fhggrey}{RGB}{225,227,227}
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[cm]{sfmath}
+
+
+\begin{document}
+\definecolor{blockblue}{rgb}{0.4588,0.4196,0.6941}
+\tikzset{%
+  block/.style    = {draw, very thick, rectangle, minimum height = 2em, minimum width = 3em, fill=blockblue!50}, 
+  sum/.style      = {draw, circle}, % Adder
+  knoten/.style	  = {draw, circle, fill=black, inner sep=0pt, minimum size=2pt},
+  hysteresis/.pic = {
+  	\draw[postaction={decorate}, thick] (-4/8,-2/8) -- (-1/8,-2/8);
+  	\draw[postaction={decorate}, thick] (-1/8,2/8) -- (-1/8,-2/8);
+  	\draw[thick] (-1/8,2/8) -- (1/8,2/8);
+  	\draw[postaction={decorate}, thick] (1/8,2/8) -- (4/8,2/8);
+  	\draw[thick] (-1/8,-2/8) -- (1/8,-2/8);
+  	\draw[postaction={decorate}, thick] (1/8,-2/8) -- (1/8,2/8);
+  },
+  sinewave/.pic = {
+  \draw[thick] (-2,0) sin (-1,1) cos (0,0) sin (1,-1) cos (2,0);
+  },
+  inverter/.pic = {
+  \draw[thick] (-3,-2) -- (3,2);
+  \pic[scale=0.8] at (1.4,-1) (sine) {sinewave};
+  \draw[thick] (-2.5,1) -- (-0.5,1);
+  \draw[thick] (-2.5,0.5) -- (-0.5,0.5);
+  }
+}
+
+\usefont{T1}{pfr}{l}{n}\selectfont							%Use Frutiger font
+\tikzsetnextfilename{irp_block}
+\begin{tikzpicture}[very thick, node distance=2.5cm,auto,>=latex', decoration={
+    markings,
+    mark=at position 0.8 with {\arrow[>=latex,scale=1.1]{>}}}]
+\draw
+	
+	node at (0,0) [sum, label={-60:\textbf{-}}] (sum2) {}
+	node [block, right of=sum2, node distance=2cm] (from_pq) {$PQ^{-1}$}
+	node [block, right of=from_pq, node distance=2cm] (hyst) {}
+	node [block, right of=hyst, node distance=2cm] (inverter) {}
+	node [block, right of=inverter, node distance=2cm] (grid) {Grid}
+	node [knoten, right of=grid, node distance=1cm] (kn1) {}
+
+	node [sum, above of=sum2, node distance=2cm, label={10:\textbf{-}}] (sum1) {}
+	node [block, right of=sum1, node distance =5cm] (to_pq) {$PQ$}
+	node [knoten, left of=to_pq, node distance=1.25cm] (kn3) {}
+	
+	node [block, above of=grid, node distance =3.2cm] (load) {Load}
+	node [knoten, below of=load, node distance=1.05cm] (kn2) {}
+	
+	node [sum, below of=inverter, node distance=2cm, label={170:\textbf{-}}] (sum3) {}
+	node [block, left of=sum3, node distance=3cm] (pi) {PI}
+	node [knoten, above of=kn1, node distance=1.86cm] (kn4) {}	
+	node [right of=sum3, node distance=1cm] (vref) {$V_{ref}$}
+		
+	node [right of=kn1, node distance=1cm](out) {$v_f$};
+
+\path[fill] node [rectangle, minimum height=2.7em, minimum width=2.7em, right of=sum1, node distance=2.32cm, fill=blockblue!50] (hpf) {};
+\path[draw, color=white] (sum1.east) to[highpass, color=black, semithick] (to_pq.west) {};
+
+\path[->] (sum2) edge node {$P_{ref}$} (from_pq);
+\draw[->] (from_pq) -- node {$i_{ref}$} (hyst);
+\draw[->] (hyst) -- node {} (inverter);
+\draw[->] (inverter) -- node {$i_c$} (grid);
+\draw[->] (inverter) -- node {$V_{DCLink}$} (sum3);
+\draw[->] (sum3) -- node {} (pi);
+\draw[->] (pi) -| node[above, xshift=.7cm, yshift=.5cm] {$P_{loss,VSC}$} (sum2);
+\draw[->] (sum1) -- node[yshift=.2cm] {$P_{ref,grid}$} (sum2);
+\draw[->] (hpf) -- node {} (sum1);
+\draw[->] (to_pq) -- (hpf);
+\draw[-]  (load) -- node {} (kn2);
+\draw[->] (kn2) -- node {} (grid);
+\draw[->] (kn2) -- node[label=above:{$i_f$}] {} ($(to_pq.south east)!0.7!(to_pq.north east)$);
+\draw[->] (kn1) |- node {} ($(to_pq.south east)!0.3!(to_pq.north east)$);
+\draw[-]  (grid) -- node {} (kn1);
+\draw[->] (kn1) -- node {} (out);
+\draw[->] (kn3) --++ (0cm,1cm) -| (sum1);
+\draw[->] (kn4) |- node {} (load.east);
+\draw[->] (vref) -- node {} (sum3);
+
+\pic[scale=1] at (hyst) {hysteresis};
+\pic[scale=0.17, transform shape] at (inverter) {inverter};
+
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{frutiger}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding=T1}% Disable ligatures because font doesn't have it
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % Math packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{circuitikz}[european]
+
+%% the following commands are needed for some matlab2tikz features
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+% Tikz
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc, intersections, arrows, shapes}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=pdf/]
+
+\definecolor{fhggreen}{RGB}{23,200,90}
+\definecolor{fhggrey}{RGB}{225,227,227}
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[cm]{sfmath}
+
+\usepackage{pagecolor}
+
+\begin{document}
+\pagecolor{fhggrey}
+\usefont{T1}{pfr}{l}{n}\selectfont							%Use Frutiger font
+\tikzsetnextfilename{pqif}
+\input{pqif.tex}
+
+\tikzsetnextfilename{mpcif}
+\input{mpcif.tex}
+
+\tikzsetnextfilename{thd}
+\input{thd.tex}
+
+%\tikzsetnextfilename{Simultech_logo}
+%\begin{tikzpicture}
+%\node (0,0) (simul) {\textbf{Simultech, Porto July 2018}};
+%\end{tikzpicture}
+
+\tikzsetnextfilename{gridmodel}
+\input{gridmodel.tikz}
+\end{document}
