@@ -187,14 +187,14 @@ headershade=plain
 %----------------------------------------------------------------------------------------
 \headerbox{PREDICTIVE CONTROLLER}{name=mpc_block,column=1,row=1,below=irpmpc,span=1}{
 \vspace{-.4em}
-\textbf{An MPC solves the optimization problem}
+\textbf{The MPC minimizes the cost function}
 \vspace{-.3em}
 \begin{equation*}
-\min_{\Delta U} \Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\Delta\mathbf{U}(k)\Vert^2_{\mathbf{R}}.
+J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\mathbf{R}}.
 \end{equation*}
 \vspace{-1.8em}
 \begin{flushleft}
-\textbf{An internal model enables prediction. The~unconstrained solution leads to a linear closed loop behaviour.}
+\textbf{ Solved  by constrained sparse quadratic programming (QP), with close loop behavior:}
 \end{flushleft}
 \vspace{-.4em}
 \includegraphics[scale=0.85]{mpc_block}
