@@ -205,31 +205,38 @@ J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\math
 %	Linear Shape Class
 %----------------------------------------------------------------------------------------
 \headerbox{LINEAR SHAPE CLASS}{name=mpc_block,column=1,row=2,below=mpc_block,span=1}{
+
 \vspace{-.7em}
 \textbf{The shape of a sine wave is described by the homogeneous ODE}
+
 \vspace{-.3em}
 \begin{equation*}
 \frac{\text{d}^2x(t)^2}{\text{d}t} + \omega^2 x(t) = 0
 \end{equation*}
-\vspace{-.1em}
+%\vspace{.1em}
+
 \textbf{and approximated in discrete time with}
 
-\vspace{.7em}
-\mbox{\large
-$\frac{\left( 2 + \omega^2 t^{2}_{s} \right)x(k)-5x(k+1)+4x(k+2)-x(k+3)}{t^{2}_{s}} = 0.$}
+\vspace{-.5em}
+\begin{equation*}
+x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
+\end{equation*}
+%\vspace{.1em}
 
-\vspace{.5em}
 \textbf{From this difference equation the \textit{linear shape class\textsuperscript{3}}{\renewcommand*\@makefnmark{}\footnote{\textsuperscript{3}Cateriano Y\'a\~nez, C., Pangalos, G., and Lichtenberg, G. (2018). An approach to linear state signal shaping by quadratic model predictive control. In \textit{European Control Conference (ECC) 2018 \vspace{-.4em}}}\makeatother} $\mathbf{V}$ is given as}
-%\vspace{-.5em}
+
+\vspace{-.3em}
 \begin{equation*}
 \mathbf{V} = 
-\left( \begin{array}{cccc} 
-2+(\omega t_s)^2 & 5 & 4 & - 1
-\end{array} \right)\in \mathbb{R}^{1 \times 4} \; .
+\left( \begin{array}{ccc} 
+1 & (\omega t_s)^2 -2 & 1
+\end{array} \right)\in \mathbb{R}^{1 \times 3} \; .
 \end{equation*}
+%\vspace{.1em}
 
 \textbf{The state error weight matrix $\mathbf{Q}$ is built using $\mathbf{V}$ by transferring the control goal to the optimization problem}
-\vspace{-.2em}
+
+\vspace{-.3em}
 \begin{equation*}
 \min_{\mathbf{X}(k)} \left( \mathbf{V}\mathbf{X}(k) \right)^2,
 \end{equation*}
@@ -238,7 +245,7 @@ $\frac{\left( 2 + \omega^2 t^{2}_{s} \right)x(k)-5x(k+1)+4x(k+2)-x(k+3)}{t^{2}_{
 \textbf{where}
 \small
 \begin{equation*} 
-\mathbf{X}(k) =  \left(\begin{array}{cccc} x(k) & x(k+1) & x(k+2) & x(k+3) \end{array} \right)^\intercal\!,
+\mathbf{X}(k) =  \left(\begin{array}{ccc} x(k-1) & x(k) & x(k+1) \end{array} \right)^\intercal\!,
 \end{equation*}
 \normalsize
 \textbf{for all times $k$.}
