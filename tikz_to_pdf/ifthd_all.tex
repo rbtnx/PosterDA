@@ -1,28 +1,74 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{frutiger}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding=T1}% Disable ligatures because font doesn't have it
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % Math packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{circuitikz}[european]
+
+%% the following commands are needed for some matlab2tikz features
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+% Tikz
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc, intersections, arrows, shapes}
+
+\usetikzlibrary{external}
+\usetikzlibrary{decorations.markings}
+\tikzexternalize[prefix=pdf/]
+
+\definecolor{fhggreen}{RGB}{23,200,90}
+\definecolor{fhggrey}{RGB}{225,227,227}
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[cm]{sfmath}
+
+
+\begin{document}
+
 % This file was created by matlab2tikz.
 %
 %The latest updates can be retrieved from
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
-\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
-\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\usefont{T1}{pfr}{l}{n}\selectfont			%Use Frutiger font
+\tikzsetnextfilename{ifthd_all}
+\definecolor{mycolor1}{rgb}{0.4588,0.4196,0.6941}%
+\definecolor{mycolor2}{rgb}{0.1922,0.6392,0.3294}%
+\definecolor{mycolor3}{rgb}{0.5961,0.0,0.2627}%
+
 %
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.7,transform shape]
 
 \begin{axis}[%
-width=4.521in,
-height=3.566in,
+grid=both,
+line width=1.5pt,
+width=3.2in,
+height=1.6in,
 at={(0.758in,0.481in)},
 scale only axis,
-xmin=0.0200,
-xmax=1.5000,
+xmin=0.5000,
+xmax=1.0000,
+xtick distance=0.1,
 ymode=log,
-ymin=0.0001,
+ymin=0.0008,
 ymax=1.0000,
+ylabel={\textbf{Feeder Line Current THD}},
+xlabel={\textbf{Time (s)}},
 yminorticks=true,
 axis background/.style={fill=white},
-legend style={legend cell align=left, align=left, draw=white!15!black}
+legend style={at={(0.5,1.03)}, anchor=south, legend columns=3, legend cell align=left, align=left, fill=none, draw=none}
 ]
 \addplot [color=mycolor1]
   table[row sep=crcr]{%
@@ -1308,7 +1354,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1.4995	0.0164\\
 1.5000	0.0164\\
 };
-\addlegendentry{data1}
+\addlegendentry{$IRP$ \qquad}
 
 \addplot [color=mycolor2]
   table[row sep=crcr]{%
@@ -1591,7 +1637,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1.1960	0.0005\\
 1.5000	0.0005\\
 };
-\addlegendentry{data2}
+\addlegendentry{$LSS MPC$ \qquad}
 
 \addplot [color=mycolor3]
   table[row sep=crcr]{%
@@ -1676,7 +1722,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1.0663	0.2367\\
 1.5000	0.2367\\
 };
-\addlegendentry{data3}
+\addlegendentry{$uncompensated$}
 
 \end{axis}
 
@@ -1697,3 +1743,5 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
 \end{axis}
 \end{tikzpicture}%
+
+\end{document}
