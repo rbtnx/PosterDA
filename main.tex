@@ -128,12 +128,12 @@ headershade=plain
 {\vspace{.4em} \smaller\textbf{Carlos Cateriano Y\'a\~nez\textsuperscript{1,2}, Kathrin Weihe\textsuperscript{1}, Georg Pangalos\textsuperscript{2}, and Gerwald Lichtenberg\textsuperscript{1}}  \\  % Author names
   
 \vspace{.4em}\normalsize{\textsuperscript{1}Hamburg University of Applied Sciences, Faculty Life Sciences, Ulmenliet 20, 21033 Hamburg \\
-\textsuperscript{2}Fraunhofer ISIT, Application Center Power Electronics for Renewable Energy Systems, Steindamm 94, 20099 Hamburg} \\ \normalsize{\vspace{.3em}{\{carlos.caterianoyanez, kathrinjoungah.weihe, gerwald.lichtenberg\}@haw-hamburg.de, georg.pangalos@isit.fraunhofer.de, }}  } % Author email addresses
+\textsuperscript{2}Fraunhofer ISIT, Application Center Power Electronics for Renewable Energy Systems, Steindamm 94, 20099 Hamburg} \\ \normalsize{\vspace{.3em}{\{carlos.caterianoyanez, kathrin.weihe, gerwald.lichtenberg\}@haw-hamburg.de, georg.pangalos@isit.fraunhofer.de, }}  } % Author email addresses
 {% Conference Logo
 \makebox[0pt][t]{%
 	\raisebox{4em}[0pt][0pt]{%
 	\hspace*{-15.5cm}
-	{\begin{tabular}{m{9.6cm} m{7cm}}
+	{\begin{tabular}{m{9cm} m{7cm}}
 		\vspace{-1cm} \includegraphics[width=7.5cm]{dies_academicus}&
 		\vspace{-1cm} \includegraphics[width=5.5cm]{_logo}
 	\end{tabular}}}}
@@ -148,8 +148,8 @@ headershade=plain
 \begin{itemize}[itemsep=0pt]
 \item High order harmonics in the electrical grid introduced by switching converters need to be compensated to avoid damage and energy loss
 \item Classic active power filter (APF) controllers are capable of compensating harmonics, but are not flexible under variable load scenarios
-\item A classic well-tested method to compensate harmonics relies on the instantaneous reference frame (IRP) theory
-\item A novel approach: \enquote{Linear State Signal Shaping Model Predictive Control} (LSSS MPC), could be utilized to compensate harmonics using shape classes, without the need to design filters for different load scenarios
+\item A state-of-the-art method to compensate harmonics relies on the instantaneous reference frame (IRP) theory
+\item A novel approach: \enquote{Linear State Signal Shaping Model Predictive Control} (LS\textsuperscript{3}MPC), could be utilized to compensate harmonics using shape classes, without the need to design filters for different load scenarios
 \end{itemize}
 \vspace{-1.3em}
 }}
@@ -161,7 +161,7 @@ headershade=plain
 \vspace{-2em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
-\item Could the LSSS MPC controller improve the grid quality compared to a standard IRP APF controller?
+\item Could the LS\textsuperscript{3}MPC improve the grid quality compared to a classic IRP APF controller?
 \item A simulation is set up to evaluate both controller types under different load scenarios
 \end{itemize}}
 \vspace{-1.2em}
@@ -301,7 +301,7 @@ v_l & \frac{di_c}{dt} & \frac{di_{l}}{dt}
 \textbf{IRP APF harmonic current compensation:}
 \includegraphics{pqif}
 
-\textbf{LSSS MPC harmonic current compensation:}
+\textbf{LS\textsuperscript{3}MPC harmonic current compensation:}
 \includegraphics{mpcif}
 
 \vspace{-.4em}
@@ -326,7 +326,7 @@ v_l & \frac{di_c}{dt} & \frac{di_{l}}{dt}
 \hline
 \rowcolor{fhgdarkgrey}
 \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Load \\scenario \end{tabular}} & \multicolumn{2}{c|}{\textit{THD} ($v_f$)} & \multicolumn{2}{c|}{\textit{THD} ($i_f$)} \\ \cline{2-5} 
-  & IRP          & MPC          & IRP          & MPC          \\ \hline
+  & IRP          & LS\textsuperscript{3}MPC         & IRP          & LS\textsuperscript{3}MPC          \\ \hline
 \cellcolor{fhgdarkgrey}\SI{100}{\ohm}           & 0.65\%       & 0.17\%       & 4.35\%       & 0.78\%       \\ \hline
 \cellcolor{fhgdarkgrey}\SI{9}{\ohm}             & 0.45\%       & 0.35\%       & 0.75\%       & 1.57\%       \\ \hline
 \cellcolor{fhgdarkgrey}\SI{2}{\ohm}             & 1.15\%       & 0.35\%       & 3.75\%       & 1.33\%       \\ \hline
@@ -342,9 +342,9 @@ v_l & \frac{di_c}{dt} & \frac{di_{l}}{dt}
 \vspace{-1.6em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
-\item The LSSS MPC approach has the potential to successfully control an APF
+\item The LS\textsuperscript{3}MPC approach has the potential to successfully control an APF
 \item Classic IRP controllers rely on high pass filter design to achieve good compensation results in a given load scenario
-\item The LSSS MPC is capable of adapting to a wider variety of load scenarios
+\item The LS\textsuperscript{3}MPC is capable of adapting to a wider variety of load scenarios
 \end{itemize}}
 \vspace{-1.0em}
 }
