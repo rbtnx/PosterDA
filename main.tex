@@ -196,10 +196,9 @@ J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\math
 \begin{flushleft}
 \textbf{ Solved  by constrained sparse quadratic programming (QP), with close loop behavior:}
 \end{flushleft}
-\vspace{.1em}
-\hspace{-2em}
-\includegraphics[scale=0.8]{mpc_sparse_block}
-\vspace{.1em}
+\vspace{-.4em}
+\includegraphics[scale=0.85]{mpc_sparse_block}
+\vspace{-1.55em}
 }
 
 %----------------------------------------------------------------------------------------
@@ -277,7 +276,7 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \headerbox{WHITE-BOX MODELING}{name=ssmodel,column=0,row=3,below=gridmodel,span=1}{
 \vspace{-.2em}
 \begin{flushleft}
-\textbf{Linear state space model of one phase} \end{flushleft}
+\textbf{Linear state space model of the grid} \end{flushleft}
 \vspace{-.7em}
 \begin{IEEEeqnarray*}{rCl}
 \mathbf{\dot{x}}(t)& = &\mathbf{A}\mathbf{x}(t)+\mathbf{B}\mathbf{u}(t)+\mathbf{E}\mathbf{d}(t)
@@ -286,19 +285,17 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \textbf{where}
 \vspace{-.65em}
 \begin{IEEEeqnarray*}{rCl}
-\mathbf{x}(t)  &= & \left(\begin{array}{c}
-i_f \\ i_c 
-\end{array}\right) \in \mathbb{R}^2 \quad 
+\mathbf{x}(t)  &= & \begin{pmatrix}
+v_l & \frac{di_c}{dt} & \frac{di_{l}}{dt} 
+\end{pmatrix}^\intercal \in \mathbb{R}^3 \quad 
 \arraycolsep=1.1pt\def\arraystretch{1.5}
-\begin{array}{rcl}u(t)&=& i_{c0}\in \mathbb{R}\\
-d(t)&=& \begin{pmatrix}v_s & i_{l0} 
-\end{pmatrix}^\intercal \in \mathbb{R}^2\end{array}
+\begin{array}{rcl}u(t)&=& \frac{\text{d}^2i_c}{\text{d}t^2}\\d(t)&=&\frac{\text{d}^2i_l}{\text{d}t^2} \end{array}
 \end{IEEEeqnarray*}
 \vspace{-.7em}
 %\textbf{with the system matrix} $\mathbf{A} \in \mathbb{R}^{3\times 3}$\textbf{, the input matrix} $\mathbf{B} \in \mathbb{R}^{3\times 1}$ \textbf{and the state disturbance matrix} $\mathbf{E} \in \mathbb{R}^{3\times 1}$.
 \textbf{and}
 \begin{equation*}
-\mathbf{A} \in \mathbb{R}^{2\times 2}, \quad \mathbf{B} \in \mathbb{R}^{2\times 1}, \quad \mathbf{E} \in \mathbb{R}^{2\times 2}.
+\mathbf{A} \in \mathbb{R}^{3\times 3}, \quad \mathbf{B} \in \mathbb{R}^{3\times 1}, \quad \mathbf{E} \in \mathbb{R}^{3\times 1}.
 \end{equation*}
 \vspace{-2em}
 }
