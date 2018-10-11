@@ -212,7 +212,7 @@ J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\math
 
 \vspace{-.3em}
 \begin{equation*}
-\frac{\text{d}^2x(t)^2}{\text{d}t} + \omega^2 x(t) = 0
+\frac{\text{d}^2x(t)^2}{\text{d}t^2} + \omega^2 x(t) = 0
 \end{equation*}
 %\vspace{.1em}
 
@@ -309,17 +309,17 @@ d(t)&=& \begin{pmatrix}v_s & i_{l0}
 \headerbox{SIMULATION STUDIES}{name=simresult,column=2,row=1,below=intro,span=1}{
 \vspace{-.5em}
 \textbf{IRP APF harmonic current compensation:}
-\includegraphics{pqif}
+\includegraphics{pqif_const}
 
 \textbf{LS\textsuperscript{3}MPC harmonic current compensation:}
-\includegraphics{mpcif}
+\includegraphics{mpcif_const}
 
 \vspace{-.4em}
 \begin{flushleft}
 \textbf{Total harmonic distortion (THD):}
 \end{flushleft}
 \vspace{-.6em}
-\includegraphics{thd} \\
+\includegraphics{thd_2nd} \\
 
 \vspace{-1.7em}
 \begin{flushleft}

@@ -50,11 +50,15 @@
   sinewave/.pic = {
   \draw[thick] (-2,0) sin (-1,1) cos (0,0) sin (1,-1) cos (2,0);
   },
-  inverter/.pic = {
-  \draw[thick] (-3,-2) -- (3,2);
-  \pic[scale=0.8] at (1.4,-1) (sine) {sinewave};
-  \draw[thick] (-2.5,1) -- (-0.5,1);
-  \draw[thick] (-2.5,0.5) -- (-0.5,0.5);
+  transf/.pic = {
+  \draw[thick] (0.75,-0.5) -- (-0.75,0.5);
+  \draw node at (-0.3,-0.2) {$PQ$};
+  \draw node at (0.3,0.2) {$abc$};
+  },
+  invtransf/.pic = {
+  \draw[thick] (-0.75,-0.5) -- (0.75,0.5);
+  \draw node at (-0.3,0.2) {$PQ$};
+  \draw node at (0.3,-0.2) {$abc$};
   }
 }
 
@@ -66,14 +70,14 @@
 \draw
 	
 	node at (0,0) [sum, label={-60:\textbf{-}}] (sum2) {}
-	node [block, right of=sum2, node distance=2cm] (from_pq) {$PQ^{-1}$}
+	node [block, right of=sum2, node distance=2cm] (from_pq) {}
 	node [block, right of=from_pq, node distance=2cm] (hyst) {}
-	node [block, right of=hyst, node distance=2cm] (inverter) {}
+	node [block, right of=hyst, node distance=2cm] (inverter) {VSC}
 	node [block, right of=inverter, node distance=2cm] (grid) {Grid}
 	node [knoten, right of=grid, node distance=1cm] (kn1) {}
 
 	node [sum, above of=sum2, node distance=2cm, label={10:\textbf{-}}] (sum1) {}
-	node [block, right of=sum1, node distance =5cm] (to_pq) {$PQ$}
+	node [block, right of=sum1, node distance =5cm] (to_pq) {}
 	node [knoten, left of=to_pq, node distance=1.25cm] (kn3) {}
 	
 	node [block, above of=grid, node distance =3.2cm] (load) {Load}
@@ -84,7 +88,7 @@
 	node [knoten, above of=kn1, node distance=1.86cm] (kn4) {}	
 	node [right of=sum3, node distance=1cm] (vref) {$V_{ref}$}
 		
-	node [right of=kn1, node distance=1cm](out) {$v_f$};
+	node [right of=kn1, node distance=1cm](out) {$v_{PCC}$};
 
 \path[fill] node [rectangle, minimum height=2.7em, minimum width=2.7em, right of=sum1, node distance=2.32cm, fill=blockblue!50] (hpf) {};
 \path[draw, color=white] (sum1.east) to[highpass, color=black, semithick] (to_pq.west) {};
@@ -110,7 +114,8 @@
 \draw[->] (vref) -- node {} (sum3);
 
 \pic[scale=1] at (hyst) {hysteresis};
-\pic[scale=0.17, transform shape] at (inverter) {inverter};
+\pic[scale=0.7, transform shape] at (to_pq) {transf};
+\pic[scale=0.7, transform shape] at (from_pq) {invtransf};
 
 
 \end{tikzpicture}
