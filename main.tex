@@ -277,21 +277,21 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \headerbox{WHITE-BOX MODELING}{name=ssmodel,column=0,row=3,below=gridmodel,span=1}{
 \vspace{-.2em}
 \begin{flushleft}
-\textbf{Linear state space model of one phase} \end{flushleft}
+\textbf{Linear state space model of per phase} \end{flushleft}
 \vspace{-.7em}
 \begin{IEEEeqnarray*}{rCl}
-\mathbf{\dot{x}}(t)& = &\mathbf{A}\mathbf{x}(t)+\mathbf{B}\mathbf{u}(t)+\mathbf{E}\mathbf{d}(t)
+\mathbf{x}(k+1)& = &\mathbf{A}\mathbf{x}(k)+\mathbf{B}u(k)+\mathbf{E}\mathbf{d}(k)
 \end{IEEEeqnarray*}
 \vspace{-.7em}
 \textbf{where}
 \vspace{-.65em}
 \begin{IEEEeqnarray*}{rCl}
-\mathbf{x}(t)  &= & \left(\begin{array}{c}
+\mathbf{x}(k)  &= & \left(\begin{array}{c}
 i_f \\ i_c 
 \end{array}\right) \in \mathbb{R}^2 \quad 
 \arraycolsep=1.1pt\def\arraystretch{1.5}
-\begin{array}{rcl}u(t)&=& i_{c0}\in \mathbb{R}\\
-d(t)&=& \begin{pmatrix}v_s & i_{l0} 
+\begin{array}{rcl}u(k)&=& i_{c0}\in \mathbb{R}\\
+\mathbf{d}(k)&=& \begin{pmatrix}v_s & i_{l0} 
 \end{pmatrix}^\intercal \in \mathbb{R}^2\end{array}
 \end{IEEEeqnarray*}
 \vspace{-.7em}
