@@ -49,12 +49,13 @@
     %\node [draw, circle, minimum size=1em,label={80:-},label={260:-}] (a) {};
     \node (a) {};
     \node (b) [left of=a,node distance=1cm, coordinate] {a};
-    \node [int] (c) [right of=a,node distance=2cm,align=center] {$\displaystyle\min_{\mathbf{\mathbf{x,u}}} J(\mathbf{u},\mathbf{x},\mathbf{x}(k),\mathbf{d})$ \\ $\text{s.t.} \quad \mathbf{Fz} = \mathbf{c}$ \\ \hspace{3.3em} $\underline{\mathbf{z}} \leq \mathbf{z} \leq \overline{\mathbf{z}}$ };
+    \node [int] (c) [right of=a,node distance=2cm,align=center] {$\displaystyle\min_{\mathbf{\mathbf{X},\mathbf{U}}} J(\mathbf{U},\mathbf{X},\mathbf{x},\mathbf{d})$ \\ $\text{s.t.} \quad \mathbf{Fz} = \mathbf{c}$ \\ \hspace{3.3em} $\underline{\mathbf{z}} \leq \mathbf{z} \leq \overline{\mathbf{z}}$ };
     \node [int] (f) [right of=c,node distance=5cm] {Plant};
     \node [right of=f,draw, fill, circle, text width=2pt, inner sep=0pt,node distance=1cm] (g) {};
     \node (h) [right of=g, node distance=1cm] {$\mathbf{x}(k)$};
-    \node (m) [above of=f, node distance=2.2cm] {$\mathbf{d}$};
+    \node (m) [above of=f, node distance=2.2cm] {$\mathbf{d_m}(k)$};
     \node [above of=f,draw, fill, circle, text width=2pt, inner sep=0pt,node distance=1.7cm] (n) {};
+    \node (p) [int][left of=n] {Predictor};
     %\node (o) [int, above of=c, node distance=1.7cm] {$\Gamma$};
     
     %\path[->] (a) edge node {} (c);
@@ -64,7 +65,10 @@
     \draw[->] (g) -- +(0,-1.6) -| (c.south);
     %\draw[->] (i) -| (a);
     \draw[->] (m) edge node {} (f);
-    \draw[->] (n) -- +(-3,0) -| (c.north);
+    \draw[->] (n) edge node {}(p);
+    \draw[-] (p) edge node [above]{$\mathbf{d}(k)$}(2,1.7);
+    \draw[->](p)-|(c.north);
+%    \draw[->] (p) -- +(-2,0) -| (c.north);
     %\draw[->] (o) -| (a);
 \end{tikzpicture}
 
