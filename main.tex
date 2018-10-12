@@ -147,7 +147,7 @@ headershade=plain
 \textbf{
 \begin{itemize}[itemsep=0pt]
 \item High order harmonics in the electrical grid introduced by switching converters need to be compensated to avoid damage and energy loss
-\item Classic active power filter (APF) controllers are capable of compensating harmonics, but are not flexible under variable load scenarios
+\item Classic active power filter (APF) controllers are capable of compensating harmonics but are not flexible under variable load scenarios
 %\item A state-of-the-art method to compensate harmonics relies on the instantaneous reactive power (IRP) theory
 %\item A novel approach: \enquote{Linear State Signal Shaping Model Predictive Control} (LS\textsuperscript{3}MPC), could be utilized to compensate harmonics using shape classes, without the need to design filters for different load scenarios
 \end{itemize}
@@ -159,12 +159,12 @@ headershade=plain
 %----------------------------------------------------------------------------------------
 \headerbox{APPLICATION PROBLEM}{name=irpmpc,column=0,row=1,below=intro,span=2}{
 \vspace{-.7em}
-\textbf{A novel approach: \enquote{Linear State Signal Shaping Model Predictive Control} (LS\textsuperscript{3}MPC), to compensate harmonics using shape classes has been developed}
+\textbf{A novel approach: Linear State Signal Shaping Model Predictive Control (LS\textsuperscript{3}MPC), has been developed to compensate harmonics using shape classes}
 \vspace{-.5em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
-\item Could the LS\textsuperscript{3}MPC improve the grid quality compared to a classic APF controller?
-\item Could the LS\textsuperscript{3}MPC adapt under variable load scenarios?
+\item Can the LS\textsuperscript{3}MPC improve the grid quality compared to a classic APF controller?
+\item Can the LS\textsuperscript{3}MPC adapt under variable load scenarios?
 \end{itemize}}
 \vspace{-1.2em}
 }
@@ -174,12 +174,14 @@ headershade=plain
 %----------------------------------------------------------------------------------------
 \headerbox{CLASSIC IRP CONTROLLER}{name=irp_block,column=0,row=1,below=irpmpc,span=1}{
 \vspace{-.7em}
-\textbf{A state-of-the-art classic APF controller to compensate harmonics relies on the instantaneous reactive power (IRP) theory}
+\textbf{The instantaneous reactive power (IRP) theory is a state-of-the-art classic APF control approach.}
+
+%A state-of-the-art classic APF controller to compensate harmonics relies on the instantaneous reactive power (IRP) theory}
 
 \vspace{.5em}
 
 \includegraphics[scale=0.68]{irp_block}
-\vspace{-1em}
+\vspace{-.985em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
 \item Clarke and p-q transformation are used
@@ -282,14 +284,14 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \headerbox{WHITE-BOX MODELING}{name=ssmodel,column=0,row=3,below=gridmodel,span=1}{
 \vspace{-.7em}
 \begin{flushleft}
-\textbf{Linear state space model of per phase} \end{flushleft}
+\textbf{Linear state space model per phase} \end{flushleft}
 \vspace{-.7em}
 \begin{IEEEeqnarray*}{rCl}
-\mathbf{x}(k+1)& = &\mathbf{A}\mathbf{x}(k)+\mathbf{B}u(k)+\mathbf{E}\mathbf{d}(k)
+\mathbf{x}(k+1)& = &\mathbf{A}\mathbf{x}(k)+\mathbf{B}u(k)+\mathbf{E}\mathbf{d_m}(k)
 \end{IEEEeqnarray*}
 \vspace{-.7em}
 \textbf{where}
-\vspace{-.369em}
+\vspace{-.338em}
 \begin{IEEEeqnarray*}{rCl}
 \mathbf{x}(k)  &= & \left(\begin{array}{c}
 i_f \\ i_c 
@@ -368,7 +370,7 @@ i_f \\ i_c
 \item The LS\textsuperscript{3}MPC can inherently adapt to a wider variety of load scenarios
 \item Current research on LS\textsuperscript{3}MPC focuses on enabling reactive power compensation
 \end{itemize}}
-\vspace{-.89em}
+\vspace{-.888em}
 }
 
 %----------------------------------------------------------------------------------------
