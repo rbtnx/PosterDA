@@ -264,7 +264,7 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \vspace{-.17em}
 \begin{center}
 %\input{figures/gridmodel.tikz}
-\includegraphics{gridmodel}
+\includegraphics{gridmodel_sim}
 \end{center}
 
 \textbf{Active power filter in shunt configuration}
@@ -319,7 +319,7 @@ d(t)&=& \begin{pmatrix}v_s & i_{l0}
 \textbf{Total harmonic distortion (THD):}
 \end{flushleft}
 \vspace{-.6em}
-\includegraphics{thd_2nd} \\
+\includegraphics{ifthd_all} \\
 
 \vspace{-1.7em}
 \begin{flushleft}
@@ -335,11 +335,11 @@ d(t)&=& \begin{pmatrix}v_s & i_{l0}
 \begin{tabular}{|c|i|j|i|j|}
 \hline
 \rowcolor{fhgdarkgrey}
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Load \\scenario \end{tabular}} & \multicolumn{2}{c|}{\textit{THD} ($v_f$)} & \multicolumn{2}{c|}{\textit{THD} ($i_f$)} \\ \cline{2-5} 
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Load \\scenario \end{tabular}} & \multicolumn{2}{c|}{\textit{THD} ($v_{PCC}$)} & \multicolumn{2}{c|}{\textit{THD} ($i_f$)} \\ \cline{2-5} 
   & IRP          & LS\textsuperscript{3}MPC         & IRP          & LS\textsuperscript{3}MPC          \\ \hline
-\cellcolor{fhgdarkgrey}\SI{100}{\ohm}           & 0.65\%       & 0.17\%       & 4.35\%       & 0.78\%       \\ \hline
-\cellcolor{fhgdarkgrey}\SI{9}{\ohm}             & 0.45\%       & 0.35\%       & 0.75\%       & 1.57\%       \\ \hline
-\cellcolor{fhgdarkgrey}\SI{2}{\ohm}             & 1.15\%       & 0.35\%       & 3.75\%       & 1.33\%       \\ \hline
+\cellcolor{fhgdarkgrey}\SI{100}{\ohm}           & 1.07\%       & 0.01\%       & 6.68\%       & 0.18\%       \\ \hline
+\cellcolor{fhgdarkgrey}\SI{9}{\ohm}             & 0.75\%       & 0.02\%       & 2.72\%       & 0.11\%       \\ \hline
+\cellcolor{fhgdarkgrey}\SI{2}{\ohm}             & 0.85\%       & 0.07\%       & 2.56\%       & 0.05\%       \\ \hline
 \end{tabular}}}}
 \vspace{-.35em}
 }
