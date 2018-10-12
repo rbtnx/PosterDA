@@ -160,6 +160,7 @@ headershade=plain
 \headerbox{APPLICATION PROBLEM}{name=irpmpc,column=0,row=1,below=intro,span=2}{
 \vspace{-.7em}
 \textbf{A novel approach: \enquote{Linear State Signal Shaping Model Predictive Control} (LS\textsuperscript{3}MPC), to compensate harmonics using shape classes has been developed}
+\vspace{-.5em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
 \item Could the LS\textsuperscript{3}MPC improve the grid quality compared to a classic APF controller?
@@ -191,9 +192,9 @@ headershade=plain
 %	Predictive Controller
 %----------------------------------------------------------------------------------------
 \headerbox{PREDICTIVE CONTROLLER}{name=mpc_block,column=1,row=1,below=irpmpc,span=1}{
-\vspace{-.4em}
+\vspace{-.7em}
 \textbf{The MPC minimizes the cost function}
-\vspace{.3em}
+\vspace{.6em}
 \begin{equation*}
 J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\mathbf{R}}.
 \end{equation*}
@@ -211,10 +212,10 @@ J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\math
 %----------------------------------------------------------------------------------------
 %	Linear Shape Class
 %----------------------------------------------------------------------------------------
-\headerbox{LINEAR SHAPE CLASS}{name=mpc_block,column=1,row=2,below=mpc_block,span=1}{
+\headerbox{LINEAR SHAPE CLASS}{name=shape_class,column=1,row=2,below=mpc_block,span=1}{
 
 \vspace{-.7em}
-\textbf{The shape of a sine wave is described by the homogeneous ODE}
+\textbf{A sine wave shape is given by the ODE}
 
 \vspace{-.3em}
 \begin{equation*}
@@ -224,7 +225,7 @@ J=\Vert\mathbf{X}(k)-\Xi(k)\Vert^2_{\mathbf{Q}}+\Vert\mathbf{U}(k)\Vert^2_{\math
 
 \textbf{and approximated in discrete time with}
 
-\vspace{-.5em}
+\vspace{-1.5em}
 \begin{equation*}
 x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \end{equation*}
@@ -242,7 +243,7 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 
 \textbf{The state error weight matrix $\mathbf{Q}$ is built using $\mathbf{V}$ by transferring the control goal to the optimization problem}
 
-\vspace{-.3em}
+\vspace{-.7em}
 \begin{equation*}
 \min_{\mathbf{X}(k)} \left( \mathbf{V}\mathbf{X}(k) \right)^2,
 \end{equation*}
@@ -255,8 +256,7 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \end{equation*}
 \normalsize
 \textbf{for all times $k$.}
-
-\vspace{.56em}
+%\vspace{.56em}
 }
 
 
@@ -280,7 +280,7 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 %	White-Box Modeling
 %----------------------------------------------------------------------------------------
 \headerbox{WHITE-BOX MODELING}{name=ssmodel,column=0,row=3,below=gridmodel,span=1}{
-\vspace{-.2em}
+\vspace{-.7em}
 \begin{flushleft}
 \textbf{Linear state space model of per phase} \end{flushleft}
 \vspace{-.7em}
@@ -289,7 +289,7 @@ x(k-1)+\left((\omega t_s)^2 -2\right)x(k)+x(k+1)=0.
 \end{IEEEeqnarray*}
 \vspace{-.7em}
 \textbf{where}
-\vspace{-.65em}
+\vspace{-.369em}
 \begin{IEEEeqnarray*}{rCl}
 \mathbf{x}(k)  &= & \left(\begin{array}{c}
 i_f \\ i_c 
@@ -312,7 +312,7 @@ i_f \\ i_c
 %----------------------------------------------------------------------------------------
 
 \headerbox{SIMULATION STUDIES}{name=simresult,column=2,row=1,below=intro,span=1}{
-\vspace{-.5em}
+\vspace{-.7em}
 \textbf{IRP APF harmonic current compensation:}
 
 \hspace{-0.5em}
@@ -349,7 +349,7 @@ i_f \\ i_c
 \rowcolor{fhgdarkgrey}
 \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Load \\scenario \end{tabular}} & \multicolumn{2}{c|}{\textit{THD} ($v_{PCC}$)} & \multicolumn{2}{c|}{\textit{THD} ($i_f$)} \\ \cline{2-5} 
   & IRP          & LS\textsuperscript{3}MPC         & IRP          & LS\textsuperscript{3}MPC          \\ \hline
-\cellcolor{fhgdarkgrey}\SI{100}{\ohm}           & 1.07\%       & 0.01\%       & 6.68\%       & 0.18\%       \\ \hline
+\cellcolor{fhgdarkgrey}\SI{100}{\ohm}           & 1.07\%       & 0.01\%       & 2.92\%       & 0.18\%       \\ \hline
 \cellcolor{fhgdarkgrey}\SI{9}{\ohm}             & 0.75\%       & 0.02\%       & 2.72\%       & 0.11\%       \\ \hline
 \cellcolor{fhgdarkgrey}\SI{2}{\ohm}             & 0.85\%       & 0.07\%       & 2.56\%       & 0.05\%       \\ \hline
 \end{tabular}}}}
@@ -361,13 +361,27 @@ i_f \\ i_c
 %----------------------------------------------------------------------------------------
 
 \headerbox{CONCLUSION}{name=conclusion,column=2,row=2,below=simresult,span=1}{
-\vspace{-1.6em}
+\vspace{-2em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
 \item The LS\textsuperscript{3}MPC can successfully improve the THD compensation of an APF
-\item Classic IRP rely on high pass filter design for a given load scenario, while LS\textsuperscript{3}MPC can inherently adapt to a wider variety
+\item The LS\textsuperscript{3}MPC can inherently adapt to a wider variety of load scenarios
 \item Current research on LS\textsuperscript{3}MPC focuses on enabling reactive power compensation
 \end{itemize}}
+\vspace{-.89em}
+}
+
+%----------------------------------------------------------------------------------------
+%	Publications
+%----------------------------------------------------------------------------------------
+
+\headerbox{PUBLICATIONS}{name=publications,column=1,row=1,below=shape_class,span=2}{
+\vspace{-1em}
+\footnotesize
+\begin{itemize}[itemsep=0pt]
+\item Cateriano Y\'a\~nez, C., Pangalos, G., and Lichtenberg, G. (2018). An approach to linear state signal shaping by quadratic model predictive control. In \textit{European Control Conference (ECC) 2018}
+\item Weihe, K., Cateriano Y\'a\~nez, C., Pangalos, G., and Lichtenberg, G. (2018). Comparison of Linear State Signal Shaping Model Predictive Control with Classical Concepts for Active Power Filter Design. In \textit{Simultech 2018}
+\end{itemize}
 \vspace{-1.0em}
 }
 
