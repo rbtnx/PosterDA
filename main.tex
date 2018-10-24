@@ -128,7 +128,7 @@ headershade=plain
 {\vspace{.4em} \smaller\textbf{Carlos Cateriano Y\'a\~nez\textsuperscript{1,2}, Kathrin Weihe\textsuperscript{1}, Georg Pangalos\textsuperscript{2}, and Gerwald Lichtenberg\textsuperscript{1}}  \\  % Author names
   
 \vspace{.4em}\normalsize{\textsuperscript{1}Hamburg University of Applied Sciences, Faculty Life Sciences, Ulmenliet 20, 21033 Hamburg \\
-\textsuperscript{2}Fraunhofer ISIT, Application Center Power Electronics for Renewable Energy Systems, Steindamm 94, 20099 Hamburg} \\ \normalsize{\vspace{.3em}{\{carlos.caterianoyanez, kathrin.weihe, gerwald.lichtenberg\}@haw-hamburg.de, georg.pangalos@isit.fraunhofer.de, }}  } % Author email addresses
+\textsuperscript{2}Fraunhofer ISIT, Application Center Power Electronics for Renewable Energy Systems, Steindamm 94, 20099 Hamburg} \\ \normalsize{\vspace{.3em}{\{carlos.caterianoyanez, kathrin.weihe, gerwald.lichtenberg\}@haw-hamburg.de, georg.pangalos@isit.fraunhofer.de }}  } % Author email addresses
 {% Conference Logo
 \makebox[0pt][t]{%
 	\raisebox{4em}[0pt][0pt]{%
@@ -179,13 +179,13 @@ headershade=plain
 %A state-of-the-art classic APF controller to compensate harmonics relies on the instantaneous reactive power (IRP) theory}
 
 \vspace{.5em}
-
+\hspace{-1.5em}
 \includegraphics[scale=0.68]{irp_block}
 \vspace{-.985em}
 \textbf{
 \begin{itemize}[itemsep=0pt]
 \item Clarke and p-q transformation are used
-\item A high pass filter extracts harmonics
+\item A low pass filter extracts harmonics
 \item A hysteresis band controller steers the voltage source converter
 \end{itemize}}
 }

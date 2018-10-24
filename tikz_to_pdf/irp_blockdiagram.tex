@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{standalone}
 \usepackage[T1]{fontenc}
 \usepackage{frutiger}
 \usepackage{microtype}
@@ -22,9 +22,9 @@
 \usetikzlibrary{shapes}
 \usetikzlibrary{calc, intersections, arrows, shapes}
 
-\usetikzlibrary{external}
+%\usetikzlibrary{external}
 \usetikzlibrary{decorations.markings}
-\tikzexternalize[prefix=pdf/]
+%\tikzexternalize[prefix=pdf/]
 
 \definecolor{fhggreen}{RGB}{23,200,90}
 \definecolor{fhggrey}{RGB}{225,227,227}
@@ -63,7 +63,7 @@
 }
 
 \usefont{T1}{pfr}{l}{n}\selectfont							%Use Frutiger font
-\tikzsetnextfilename{irp_block}
+%\tikzsetnextfilename{irp_block}
 \begin{tikzpicture}[very thick, node distance=2.5cm,auto,>=latex', decoration={
     markings,
     mark=at position 0.8 with {\arrow[>=latex,scale=1.1]{>}}}]
@@ -90,8 +90,8 @@
 		
 	node [right of=kn1, node distance=1cm](out) {$v_{PCC}$};
 
-\path[fill] node [rectangle, minimum height=2.7em, minimum width=2.7em, right of=sum1, node distance=2.32cm, fill=blockblue!50] (hpf) {};
-\path[draw, color=white] (sum1.east) to[highpass, color=black, semithick] (to_pq.west) {};
+\path[fill] node [rectangle, minimum height=2.7em, minimum width=2.7em, right of=sum1, node distance=2.32cm, fill=blockblue!50] (lpf) {};
+\path[draw, color=white] (sum1.east) to[lowpass, color=black, semithick] (to_pq.west) {};
 
 \path[->] (sum2) edge node {$P_{ref}$} (from_pq);
 \draw[->] (from_pq) -- node {$i_{ref}$} (hyst);
@@ -101,8 +101,8 @@
 \draw[->] (sum3) -- node {} (pi);
 \draw[->] (pi) -| node[above, xshift=.7cm, yshift=.5cm] {$P_{loss,VSC}$} (sum2);
 \draw[->] (sum1) -- node[yshift=.2cm] {$P_{ref,grid}$} (sum2);
-\draw[->] (hpf) -- node {} (sum1);
-\draw[->] (to_pq) -- (hpf);
+\draw[->] (lpf) -- node {} (sum1);
+\draw[->] (to_pq) -- (lpf);
 \draw[-]  (load) -- node {} (kn2);
 \draw[->] (kn2) -- node {} (grid);
 \draw[->] (kn2) -- node[label=above:{$i_f$}] {} ($(to_pq.south east)!0.7!(to_pq.north east)$);
